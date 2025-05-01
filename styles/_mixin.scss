@@ -1,0 +1,19 @@
+// Цвета
+$active: #5A0DAC;
+$disabled: #532881;
+$to-do: #9D69D6;
+$bg-color: #282828;
+$milk: white;
+$grey: grey;
+
+// Шрифты
+@font-face {
+    font-family: 'BalsamiqSans-Bold';
+    src: url('/fonts/BalsamiqSans-Bold.woff');
+}
+@font-face {
+    font-family: 'BalsamiqSans-Regular';
+    src: url('/fonts/BalsamiqSans-Regular.woff');
+}
+$BalsamiqSans-Bold: 'BalsamiqSans-Bold', sans-serif;
+$BalsamiqSans-Regular: 'BalsamiqSans-Regular', sans-serif;

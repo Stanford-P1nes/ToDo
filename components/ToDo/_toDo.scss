@@ -1,0 +1,188 @@
+.toDo {
+    max-width: 800px;
+    min-height: 200px;
+    background-color: $to-do;
+    border-radius: 20px;
+    border: 1px solid $milk;
+    box-shadow: inset 0 0 10px #282828;
+    margin: 0 auto;
+    padding: 20px;
+}
+.toDoItem {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 5px;
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+// Ввод текста
+.inputTodo {
+    width: 100%;
+    caret-color: $active;
+    opacity: .8;
+    transition: opacity .2s linear;
+    padding: 20px;
+    &:focus {
+        opacity: 1;
+    }
+    &::placeholder {
+        color: $disabled;
+        opacity: .7;
+    }
+}
+// Кнопки
+.btnAdd {
+    padding: 20px;
+    background-color: orangered;
+    transition: opacity .1s ease;
+    &:active {
+        opacity: .9;
+    }
+}
+.btnSort, .btnFilter {
+    padding: 10px 20px;
+    background-color: orange;
+    transition: background .1s ease;
+    &:active {
+        opacity: .9;
+    }
+}
+.searchForm {
+    width: 100%;
+    display: flex;
+    gap: 5px;
+}
+.btnSearch {
+    padding: 10px 20px;
+    background-color: $milk;
+    img {
+        transition: transform 1s ease;
+    }
+    &:hover {
+        img {
+            transform: scale(1.1);
+        }
+    }
+}
+.inputSeatch {
+    width: 100%;
+    caret-color: $active;
+    opacity: .8;
+    transition: opacity .2s linear;
+    padding: 10px 20px;
+    &:focus {
+        opacity: 1;
+    }
+    &::placeholder {
+        color: $disabled;
+        opacity: .7;
+    }
+}
+// Уже сами таски
+.toDoItem__info {
+    flex-direction: column;
+}
+.taskToDo {
+    width: 100%;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.btnCheckboxWrapper {
+    padding: 11px;
+    border-radius: 15px;
+    background-color: $disabled;
+    border: 2px solid $active;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:has(.btnCheckbox:checked) {
+        background-color: $active;
+    }
+}
+.btnCheckbox {
+    position: relative;
+    width: 35px;
+    aspect-ratio: 1;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: $milk;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    transition: all .1s linear;
+    box-shadow: 0 0 5px $bg-color;
+    &:checked {
+        background-color: orangered;
+        &::after {
+            content: '✔';
+            position: absolute;
+        }
+    }
+}
+.taskData {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    border: 2px solid $active;
+    border-radius: 15px;
+    background-color: $milk;
+    color: $active;
+    font-size: 1.5rem;
+    transition: all .2s linear;
+    text-wrap: wrap;
+    overflow-wrap: anywhere;
+    &.done {
+        text-decoration: line-through;
+        opacity: .7;
+    }
+    .taskDate {
+        position: absolute;
+        right: 10px;
+        bottom: 2px;
+        font-size: 1rem;
+        color: $grey;
+    }
+}
+.btnRename, .btnRemove {
+    height: 100%;
+    background-color: orange;
+    aspect-ratio: 1;
+    padding: 15px;
+    transition: background .1s ease;
+    &:active {
+        background-color: red;
+    }
+}
+.btnRename {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+        width: 32px;
+        object-fit: contain;
+    }
+}
+.btnRemove {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+        width: 32px;
+        object-fit: contain;
+    }
+}
+// Блок без задач
+.noTaskBlock {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    background-color: $milk;
+    border: 2px solid $active;
+    border-radius: 15px;
+    color: $active;
+    font-size: 2rem;
+}

@@ -1,0 +1,31 @@
+.header {
+    width: 100%;
+    background-color: $to-do;
+    margin-bottom: 40px;
+}
+.headerInner {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+}
+nav {
+    ul {
+        display: flex;
+        li {
+            margin-right: 20px;
+            .navLink {
+                color: $milk;
+                font-size: 1.5rem;
+                font-weight: 600;
+                text-decoration: none;
+                transition: text-shadow .2s ease;
+                &:hover, &:active {
+                    text-shadow: 0 0 5px orangered;
+                }
+                &.router-link-exact-active {
+                    text-shadow: 0 0 5px orangered;
+                }
+            }
+        }
+    }
+}
