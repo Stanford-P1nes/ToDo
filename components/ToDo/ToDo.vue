@@ -20,15 +20,28 @@
 
     // Тот про фильтрацию и сортировку
     const sort = ref(true) // true - по возрастанию, false - по убыванию
-    const filter = ref(false); // true -готовые задачи, false - все задачи
+    const searchQuery = ref(''); // Тут про поисковую выдачу
+    const filterModes = ['All', 'Done', 'Note ready']; // Массив состояний
+    const currentFilterIndex = ref(0); // Индекс массива состояний
+    const filterText = ref('All') // Текущее состояние и такст для кнопки
+    function checkStateFilter() {
+        currentFilterIndex.value = (currentFilterIndex.value + 1) % filterModes.length
+        filterText.value = filterModes[currentFilterIndex.value]
+    }
     const filtredAndSortedToDo = computed(() => {
         return [...toDoStore.todos]
         .sort((a, b) => sort.value ? a.id - b.id : b.id - a.id)
-        .filter(todo => filter.value ? todo.done : todo)
+        .filter(todo => {
+            if (filterText.value === 'Done') {
+                return todo.done
+            }
+            if (filterText.value === 'Note ready') {
+                return !todo.done
+            }
+            return true
+        })
         .filter(todoText => todoText.text.toLowerCase().includes(searchQuery.value.toLowerCase()))
     });
-    // Тут про поисковую выдачу
-    const searchQuery = ref('');
 
     // Тут сохраненные картинки
     import penImg from '~/public/icons/pen-svgrepo-com.svg';
@@ -44,7 +57,7 @@
         </div>
         <div class="toDoItem">
             <button class='button btnSort' type="button" @click='sort = !sort'>Sort {{ sort ? '↑' : '↓' }}</button>
-            <button class='button btnFilter' type="button" @click='filter = !filter'>Filter {{ filter ? 'done' : 'all' }}</button>
+            <button class='button btnFilter' type="button" @click='checkStateFilter'>{{ filterText }}</button>
             <div class="searchForm">
                 <button class="button btnSearch" type="button">
                     <img :src="searchImg" alt="Иконка лупы для поисковой выдачи">
