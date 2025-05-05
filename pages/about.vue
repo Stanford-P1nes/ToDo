@@ -28,9 +28,12 @@
         &:last-child {
             margin-bottom: 0;
         }
+        @media (max-width: 480px) {
+            font-size: 1rem;
+        }
     }
     .aboutInner {
-        width: 800px;
+        max-width: 800px;
         margin: 0 auto;
     }
 </style>

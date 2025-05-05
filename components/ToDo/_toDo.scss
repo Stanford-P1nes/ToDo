@@ -7,6 +7,12 @@
     box-shadow: inset 0 0 10px #282828;
     margin: 0 auto;
     padding: 20px;
+    @media (max-width: 680px) {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+        border: none;
+    }
 }
 .toDoItem {
     display: flex;
@@ -22,7 +28,6 @@
     caret-color: $active;
     opacity: .8;
     transition: opacity .2s linear;
-    padding: 20px;
     &:focus {
         opacity: 1;
     }
@@ -38,6 +43,9 @@
     transition: opacity .1s ease;
     &:active {
         opacity: .9;
+    }
+    @media (max-width: 560px) {
+        padding: 10px;
     }
 }
 .btnSort, .btnFilter {
@@ -55,9 +63,10 @@
     gap: 5px;
 }
 .btnSearch {
-    padding: 10px 20px;
     background-color: $milk;
     img {
+        width: 32px;
+        height: 32px;
         transition: transform 1s ease;
     }
     &:hover {
@@ -71,7 +80,6 @@
     caret-color: $active;
     opacity: .8;
     transition: opacity .2s linear;
-    padding: 10px 20px;
     &:focus {
         opacity: 1;
     }
@@ -86,9 +94,9 @@
 }
 .taskToDo {
     width: 100%;
+    height: 100%;
     display: flex;
     gap: 5px;
-    align-items: center;
 }
 .btnCheckboxWrapper {
     padding: 11px;
@@ -123,10 +131,14 @@
             position: absolute;
         }
     }
+    @media (max-width: 560px) {
+        width: 24px;
+    }
 }
 .taskData {
     position: relative;
     width: 100%;
+    min-height: 100%;
     padding: 20px;
     border: 2px solid $active;
     border-radius: 15px;
@@ -147,9 +159,15 @@
         font-size: 1rem;
         color: $grey;
     }
+    @media (max-width: 560px) {
+        font-size: 1rem;
+        padding: 20px 10px;
+        .taskDate {
+            font-size: .625rem;
+        }
+    }
 }
 .btnRename, .btnRemove {
-    height: 100%;
     background-color: orange;
     aspect-ratio: 1;
     padding: 15px;
@@ -158,22 +176,20 @@
         background-color: red;
     }
 }
-.btnRename {
+.btnRename, .btnRemove {
     display: flex;
     justify-content: center;
     align-items: center;
     img {
         width: 32px;
+        height: 32px;
         object-fit: contain;
     }
-}
-.btnRemove {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    img {
-        width: 32px;
-        object-fit: contain;
+    @media (max-width: 560px) {
+        img {
+            width: 24px;
+            height: 24px;
+        }
     }
 }
 // Блок без задач
@@ -186,4 +202,20 @@
     border-radius: 15px;
     color: $active;
     font-size: 2rem;
+    @media (max-width: 560px) {
+        font-size: 1rem;
+    }
+}
+// --------------------------------
+.btnSort, .btnFilter, .btnSearch {
+    padding: 10px 20px;
+    @media (max-width: 560px) {
+        padding: 5px 10px;
+    }
+}
+.inputTodo, .inputSeatch {
+    padding: 20px;
+    @media (max-width: 560px) {
+        padding: 10px;
+    }
 }

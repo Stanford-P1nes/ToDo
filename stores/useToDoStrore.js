@@ -1,7 +1,8 @@
+import { ref } from "vue";
 import { defineStore } from "pinia";
 export const useToDoStore = defineStore('todo', {
 	state: () => ({
-		todos: [
+		todos: ref([
 			{
 				id: 1,
 				text: 'Устроиться в Djigit',
@@ -26,7 +27,7 @@ export const useToDoStore = defineStore('todo', {
 				done: false,
 				createdAt: '30.04.2025 - 18:38:00',
 			},
-		],
+		]),
 	}),
 	actions: {
 		addToDo(text) {

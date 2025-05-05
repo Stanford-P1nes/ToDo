@@ -1,8 +1,9 @@
 <script setup>
-    import { ref, computed, onMounted } from 'vue';
+    import { ref, computed } from 'vue';
     import { useToDoStore } from '../../stores/useToDoStrore';
 
     const toDoStore = useToDoStore(); // Ссылка на хранилище
+
     const newTask = ref(''); // Новая задача
     // Добавление задач
     function addTask() {
