@@ -1,16 +1,10 @@
 <script setup>
-    import { ref, computed } from 'vue';
+    import { ref, computed, onMounted } from 'vue';
     import { useToDoStore } from '../../stores/useToDoStrore';
 
-    // Тут про хранилище
-    const toDoStore = useToDoStore();
-    const newTask = ref('');
-    function addTackEnter(event) { // при нажатии на enter
-        if (event.keyCode === 13) {
-            addTask()
-        }
-    }
-    // Тут про таски
+    const toDoStore = useToDoStore(); // Ссылка на хранилище
+    const newTask = ref(''); // Новая задача
+    // Добавление задач
     function addTask() {
         if (newTask.value.trim()) {
             toDoStore.addToDo(newTask.value)
@@ -52,7 +46,7 @@
 <template>
     <div class="toDo">
         <div class='toDoItem'>
-            <input class="inputTodo" v-model="newTask" type="text" placeholder="Что на сегодня..." autocomplete="off" @keypress='addTackEnter'>
+            <input class="inputTodo" v-model="newTask" type="text" placeholder="Что на сегодня..." autocomplete="off" @keyup.enter='addTask'>
             <button class="button btnAdd" type="button" @click='addTask'>Добавить</button>
         </div>
         <div class="toDoItem">
