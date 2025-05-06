@@ -47,17 +47,17 @@
 <template>
     <div class="toDo">
         <div class='toDoItem'>
-            <input class="inputTodo" v-model="newTask" type="text" placeholder="Что на сегодня..." autocomplete="off" @keyup.enter='addTask'>
+            <input class="input inputTodo" v-model="newTask" type="text" placeholder="Что на сегодня..." autocomplete="off" @keyup.enter='addTask' autofocus>
             <button class="button btnAdd" type="button" @click='addTask'>Добавить</button>
         </div>
         <div class="toDoItem">
-            <button class='button btnSort' type="button" @click='sort = !sort'>Sort {{ sort ? '↑' : '↓' }}</button>
-            <button class='button btnFilter' type="button" @click='checkStateFilter'>{{ filterText }}</button>
             <div class="searchForm">
+                <button class='button btnSort' type="button" @click='sort = !sort'>Sort {{ sort ? '↑' : '↓' }}</button>
+                <button class='button btnFilter' type="button" @click='checkStateFilter'>{{ filterText }}</button>
                 <button class="button btnSearch" type="button">
                     <img :src="searchImg" alt="Иконка лупы для поисковой выдачи">
                 </button>
-                <input v-model='searchQuery' class="inputSeatch" type="text" placeholder="Найти...">
+                <input v-model='searchQuery' class="input inputSeatch" type="text" placeholder="Найти...">
             </div>
         </div>
         <div class="toDoItem toDoItem__info">
@@ -80,20 +80,22 @@
                         </span>
                     </template>
                     <!-- Кнопка - изменить задачу -->
-                     <template v-if="toDo.isEditing">
-                        <button class="button btnRename" type="button" @click='toDo.isEditing = false'>
-                            ✔
+                     <div class="editButtonsBlock">
+                        <template v-if="toDo.isEditing">
+                            <button class="button btnRename" type="button" @click='toDo.isEditing = false'>
+                                ✔
+                            </button>
+                        </template>
+                        <template v-else>
+                            <button class="button btnRename" type="button" @click='toDo.isEditing = true'>
+                                <img :src="penImg" alt="Иконка карандаша">
+                            </button>
+                        </template>
+                        <!-- Кнопка - удалить задачу -->
+                        <button class="button btnRemove" type="button" @click='toDoStore.deleteToDo(toDo.id)'>
+                            <img :src="trashImg" alt="Иконка мусорного бака">
                         </button>
-                     </template>
-                    <template v-else>
-                        <button class="button btnRename" type="button" @click='toDo.isEditing = true'>
-                            <img :src="penImg" alt="Иконка карандаша">
-                        </button>
-                    </template>
-                    <!-- Кнопка - удалить задачу -->
-                    <button class="button btnRemove" type="button" @click='toDoStore.deleteToDo(toDo.id)'>
-                        <img :src="trashImg" alt="Иконка мусорного бака">
-                    </button>
+                     </div>
                 </div>
             </template>
             <template v-else>

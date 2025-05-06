@@ -1,7 +1,5 @@
 <template>
     <main>
-        <div class="container">
-            <ToDo />
-        </div>
+        <ToDo />
     </main>
 </template>

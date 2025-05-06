@@ -58,9 +58,6 @@ table {
     max-width: calc(1200px + $padding * 2);
     padding: 0 $padding;
     margin: 0 auto;
-	@media (max-width: 680px) {
-        padding: 0;
-    }
 }
 main {
 	flex: 1 1 0;
@@ -79,7 +76,6 @@ input, button {
 input::placeholder {
 	font-family: $BalsamiqSans-Regular;
 }
-.button {
+button {
 	cursor: pointer;
-	font-weight: 700;
 }

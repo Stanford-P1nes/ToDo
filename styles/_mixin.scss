@@ -17,3 +17,16 @@ $grey: grey;
 }
 $BalsamiqSans-Bold: 'BalsamiqSans-Bold', sans-serif;
 $BalsamiqSans-Regular: 'BalsamiqSans-Regular', sans-serif;
+
+// mixin
+@mixin buttonPrim() {
+    background-color: $milk;
+    color: $bg-color;
+}
+@mixin buttonSecond() {
+    background-color: orangered;
+    color: $milk;
+}
+@mixin input() {
+    padding: 20px;
+}

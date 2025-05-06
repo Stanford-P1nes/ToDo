@@ -22,48 +22,34 @@
         margin-bottom: 0;
     }
 }
+
 // Ввод текста
 .inputTodo {
-    width: 100%;
-    caret-color: $active;
-    opacity: .8;
-    transition: opacity .2s linear;
-    &:focus {
-        opacity: 1;
-    }
-    &::placeholder {
-        color: $disabled;
-        opacity: .7;
-    }
+    flex-grow: 6;
 }
-// Кнопки
 .btnAdd {
-    padding: 20px;
-    background-color: orangered;
-    transition: opacity .1s ease;
-    &:active {
-        opacity: .9;
-    }
-    @media (max-width: 560px) {
-        padding: 10px;
-    }
+    @include buttonSecond;
 }
-.btnSort, .btnFilter {
-    padding: 10px 20px;
-    background-color: orange;
-    transition: background .1s ease;
-    width: 20%;
-    &:active {
-        opacity: .9;
+
+// Поисковая выдача
+.btnSort, .btnFilter, .btnSearch {
+    @include buttonPrim;
+    flex-grow: 1;
+}
+.btnSearch {
+    @media (max-width: 390px) {
+        display: none;
     }
 }
 .searchForm {
-    width: 100%;
     display: flex;
     gap: 5px;
+    flex-grow: 5;
+}
+.inputSeatch {
+    flex-grow: 5;
 }
 .btnSearch {
-    background-color: $milk;
     img {
         width: 32px;
         height: 32px;
@@ -75,31 +61,18 @@
         }
     }
 }
-.inputSeatch {
-    width: 100%;
-    caret-color: $active;
-    opacity: .8;
-    transition: opacity .2s linear;
-    &:focus {
-        opacity: 1;
-    }
-    &::placeholder {
-        color: $disabled;
-        opacity: .7;
-    }
-}
+
 // Уже сами таски
 .toDoItem__info {
     flex-direction: column;
 }
 .taskToDo {
     width: 100%;
-    height: 100%;
     display: flex;
     gap: 5px;
 }
 .btnCheckboxWrapper {
-    padding: 11px;
+    padding: 20px;
     border-radius: 15px;
     background-color: $disabled;
     border: 2px solid $active;
@@ -108,6 +81,9 @@
     align-items: center;
     &:has(.btnCheckbox:checked) {
         background-color: $active;
+    }
+    @media (max-width: 560px) {
+        padding: 0;
     }
 }
 .btnCheckbox {
@@ -137,8 +113,7 @@
 }
 .taskData {
     position: relative;
-    width: 100%;
-    min-height: 100%;
+    width: 70%;
     padding: 20px;
     border: 2px solid $active;
     border-radius: 15px;
@@ -160,6 +135,7 @@
         color: $grey;
     }
     @media (max-width: 560px) {
+        width: 80%;
         font-size: 1rem;
         padding: 20px 10px;
         .taskDate {
@@ -167,23 +143,30 @@
         }
     }
 }
-.btnRename, .btnRemove {
-    background-color: orange;
-    aspect-ratio: 1;
-    padding: 15px;
-    transition: background .1s ease;
-    &:active {
-        background-color: red;
+
+// Кнопки изменить и удалить
+.editButtonsBlock {
+    display: flex;
+    width: 30%;
+    gap: 5px;
+    @media (max-width: 560px) {
+        width: 20%;
+        flex-direction: column;
     }
 }
 .btnRename, .btnRemove {
+    padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: background .1s ease;
     img {
         width: 32px;
         height: 32px;
         object-fit: contain;
+    }
+    &:active {
+        background-color: red;
     }
     @media (max-width: 560px) {
         img {
@@ -192,9 +175,39 @@
         }
     }
 }
+
+// Общие стили для кнопок
+.button {
+    flex-grow: 1;
+	cursor: pointer;
+	font-weight: 700;
+    transition: opacity .1s ease;
+    &:active {
+        opacity: .9;
+    }
+}
+
+// Общие стили для элементов ввода
+.input {
+    @include input;
+    caret-color: $active;
+    opacity: .8;
+    transition: opacity .2s linear;
+    &:focus {
+        opacity: 1;
+    }
+    &::placeholder {
+        color: $disabled;
+        opacity: .7;
+    }
+    @media (max-width: 560px) {
+        padding: 10px;
+    }
+}
+
 // Блок без задач
 .noTaskBlock {
-    width: 100%;
+    flex-grow: 1;
     text-align: center;
     padding: 20px;
     background-color: $milk;
@@ -204,18 +217,5 @@
     font-size: 2rem;
     @media (max-width: 560px) {
         font-size: 1rem;
-    }
-}
-// --------------------------------
-.btnSort, .btnFilter, .btnSearch {
-    padding: 10px 20px;
-    @media (max-width: 560px) {
-        padding: 5px 10px;
-    }
-}
-.inputTodo, .inputSeatch {
-    padding: 20px;
-    @media (max-width: 560px) {
-        padding: 10px;
     }
 }
