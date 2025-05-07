@@ -1,10 +1,8 @@
 .header {
+    position: absolute;
     width: 100%;
     background-color: $to-do;
-    margin-bottom: 40px;
-    @media (max-width: 680px) {
-        margin-bottom: 20px;
-    }
+    z-index: 1000;
 }
 .headerInner {
     display: flex;

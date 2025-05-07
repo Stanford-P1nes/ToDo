@@ -1,6 +1,6 @@
 <template>
     <section class="resume">
-        <div class="resumeCol resumeCol__left">
+        <div class="col col__left">
             <div class="miniBlock miniBlock__titleBlock">
                 <h3>Агаев Рамазан</h3>
                 <strong title="Должность">Frontend-разработчки</strong>
@@ -39,9 +39,10 @@
                 </div>
             </div>
         </div>
-        <div class="resumeCol miniBlock__right">
+        <div class="col col__right">
             <div class="miniBlock miniBlock__location">
-                <strong>Дагестан, г. Махачкала</strong>
+                <h4 title='Основные данные'>Основные данные</h4>
+                <span>Дагестан, г. Махачкала</span>
                 <a href="tel:+79604090073">8(960)409-0073</a>
                 <a href="mailto:pines10110@gmail.com">pines10110@gmail.com</a>
             </div>

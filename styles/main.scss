@@ -61,6 +61,11 @@ table {
 }
 main {
 	flex: 1 1 0;
+	padding-top: 40px;
+	margin-top: 64px;
+	@media (max-width: 680px) {
+		padding-top: 20px;
+	}
 }
 input, button {
 	outline: none;
@@ -78,4 +83,12 @@ input::placeholder {
 }
 button {
 	cursor: pointer;
+}
+.page-enter-active,
+.page-leave-active {
+	transition: all .2s;
+}
+.page-enter-from,
+.page-leave-to {
+	opacity: 0;
 }
