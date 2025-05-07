@@ -1,7 +1,7 @@
 <script setup>
     import { ref, computed } from 'vue';
     import { useTodoStore } from '@/stores/useTodoStore'
-    const { todos, addTodo, toggleTodo, removeTodo } = useTodoStore();
+    const { todos, addTodo, editTodo, toggleTodo, removeTodo } = useTodoStore();
 
     const newTask = ref(''); // Новая задача
 
@@ -73,7 +73,7 @@
                     </div>
                     <!-- Текст задачки -->
                     <template v-if='todo.isEditing'>
-                        <input class="taskData taskToDo__data" type="text" v-model='todo.text' @blur='todo.isEditing = false' @keyup.enter='todo.isEditing = false' autofocus tabindex="3" title='Изменить'>
+                        <input class="taskData taskToDo__data" type="text" v-model='todo.text' @blur='editTodo(todo.id)' @keyup.enter='editTodo(todo.id)' autofocus tabindex="3" title='Изменить'>
                     </template>
                     <template v-else>
                         <span class="taskData taskToDo__data" :class='{done: todo.done}'>

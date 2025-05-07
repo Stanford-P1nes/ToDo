@@ -1,42 +1,20 @@
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 // хранилище
-const todos = ref([
-	{
-		id: 1,
-		text: 'Устроиться в Djigit',
-		done: false,
-		createdAt: '03.05.2025 - 18:00:00',
-		isEditing: false,
-	},
-	{
-		id: 2,
-		text: 'Сделать адаптивный сайт',
-		done: true,
-		createdAt: '01.05.2025 - 06:01:00',
-		isEditing: false,
-	},
-	{
-		id: 3,
-		text: 'Сделать todo приложение',
-		done: true,
-		createdAt: '29.04.2025 - 19:24:00',
-		isEditing: false,
-	},
-	{
-		id: 4,
-		text: 'Стать миллионером',
-		done: false,
-		createdAt: '27.04.2025 - 20:05:00',
-		isEditing: false,
-	},
-])
+const todos = ref([])
+
+// Наблюдаем за изменениями
+watch(todos, () => {
+	saveToTodoStore()
+}, {deep: true})
 
 // Выводим локальное хранилище
 function initStore() {
 	if (typeof window !== 'undefined') {
 		const saved = JSON.parse(localStorage.getItem('todos'))
-		todos.value = saved
+		if (saved && Array.isArray(saved)) {
+			todos.value = saved
+		}
 	}
 } initStore()
 
@@ -59,7 +37,12 @@ function addTodo(text) {
         createdAt: `${formattedDate} - ${formattedTime}`,
         isEditing: false,
     })
-	saveToTodoStore()
+}
+
+// Изменить задачу
+function editTodo(id) {
+	const todo = todos.value.find(todo => todo.id === id)
+	todo.isEditing = false
 }
 
 // Отмечаем задачу
@@ -68,13 +51,11 @@ function toggleTodo(id) {
     if (todo) {
         todo.done = !todo.done
     }
-	saveToTodoStore()
 }
 
 // Удаляем задачу
 function removeTodo(id) {
 	todos.value = todos.value.filter(todo => todo.id !== id)
-	saveToTodoStore()
 }
 
 // Эеспортируем всё
@@ -82,6 +63,7 @@ export function useTodoStore() {
 	return {
 		todos,
 		addTodo,
+		editTodo,
 		toggleTodo,
 		removeTodo,
 	}
