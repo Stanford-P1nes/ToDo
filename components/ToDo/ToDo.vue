@@ -61,7 +61,7 @@
                 <button class="button btnSearch btnSearch_hide button_active" type="button" title='Бесполезная кнопка'>
                     <img :src="searchImg" alt="Иконка лупы для поисковой выдачи">
                 </button>
-                <input :disabled='!todos.length' v-model='searchQuery' class="input searchForm__input input_disabled" type="text" placeholder="Найти..." tabindex="2" title='Поисковая выдача'>
+                <input v-model='searchQuery' class="input searchForm__input input_disabled" type="text" placeholder="Найти..." tabindex="2" title='Поисковая выдача'>
             </div>
         </div>
         <div class="toDoItem toDoItem__bottom">
