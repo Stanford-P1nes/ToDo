@@ -55,8 +55,8 @@ table {
 }
 .container {
     $padding: 15px;
-    max-width: calc(1200px + $padding * 2);
     padding: 0 $padding;
+    max-width: calc(1200px + $padding * 2);
     margin: 0 auto;
 }
 main {

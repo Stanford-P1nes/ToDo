@@ -1,6 +1,6 @@
 <script setup>
     useHead({
-        title: 'ToDo',
+        title: 'Resume',
         htmlAttrs: {
             lang: 'ru',
         },
@@ -13,12 +13,8 @@
 
 <template>
     <main>
-        <ToDo class="main__toDo" />
+        <div class="container">
+            <Resume />
+        </div>
     </main>
 </template>
-
-<style lang='scss' scoped>
-    .main__toDo {
-        margin: 0 auto;
-    }
-</style>

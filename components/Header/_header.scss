@@ -3,7 +3,7 @@
     background-color: $to-do;
     margin-bottom: 40px;
     @media (max-width: 680px) {
-        margin-bottom: 0;
+        margin-bottom: 20px;
     }
 }
 .headerInner {
@@ -27,9 +27,6 @@ nav {
                 }
                 &.router-link-exact-active {
                     text-shadow: 0 0 5px orangered;
-                }
-                @media (max-width: 480px) {
-                    font-size: 1rem;
                 }
             }
         }

@@ -5,11 +5,10 @@
     border-radius: 20px;
     border: 1px solid $milk;
     box-shadow: inset 0 0 10px #282828;
-    margin: 0 auto;
     padding: 20px;
     @media (max-width: 680px) {
-        width: 100vw;
-        height: 100vh;
+        width: 100%;
+        min-height: 100vh;
         border-radius: 0;
         border: none;
     }
@@ -24,8 +23,8 @@
 }
 
 // Ввод текста
-.inputTodo {
-    flex-grow: 6;
+.toDoItem__input {
+    flex-grow: 5;
 }
 .btnAdd {
     @include buttonSecond;
@@ -36,7 +35,7 @@
     @include buttonPrim;
     flex-grow: 1;
 }
-.btnSearch {
+.btnSearch_hide {
     @media (max-width: 480px) {
         display: none;
     }
@@ -46,8 +45,11 @@
     gap: 5px;
     flex-grow: 5;
 }
-.inputSeatch {
+.searchForm__input {
     flex-grow: 5;
+}
+.input_disabled:disabled {
+    cursor: not-allowed;
 }
 .btnSearch {
     img {
@@ -63,13 +65,26 @@
 }
 
 // Уже сами таски
-.toDoItem__info {
+.toDoItem__bottom {
     flex-direction: column;
 }
 .taskToDo {
     width: 100%;
     display: flex;
     gap: 5px;
+    .taskToDo__data {
+        width: 70%;
+        @media (max-width: 560px) {
+            width: 80%;
+        }
+    }
+    .taskToDo__editButtonsBlock {
+        width: 30%;
+        @media (max-width: 560px) {
+            width: 20%;
+            flex-direction: column;
+        }
+    }
 }
 .btnCheckboxWrapper {
     padding: 20px;
@@ -79,7 +94,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    &:has(.btnCheckbox:checked) {
+    &.btnCheckboxWrapper_active:has(.btnCheckbox:checked) {
         background-color: $active;
     }
     @media (max-width: 560px) {
@@ -100,7 +115,7 @@
     border-radius: 10px;
     transition: all .1s linear;
     box-shadow: 0 0 5px $bg-color;
-    &:checked {
+    &.btnCheckbox_active:checked {
         background-color: orangered;
         &::after {
             content: '✔';
@@ -113,7 +128,6 @@
 }
 .taskData {
     position: relative;
-    width: 70%;
     padding: 20px;
     border: 2px solid $active;
     border-radius: 15px;
@@ -127,31 +141,33 @@
         text-decoration: line-through;
         opacity: .7;
     }
-    .taskDate {
+    .taskData__date {
         position: absolute;
         right: 10px;
         bottom: 2px;
-        font-size: 1rem;
-        color: $grey;
-    }
-    @media (max-width: 560px) {
-        width: 80%;
-        font-size: 1rem;
-        padding: 20px 10px;
-        .taskDate {
+        @media (max-width: 560px) {
             font-size: .625rem;
         }
     }
+    @media (max-width: 560px) {
+        font-size: 1rem;
+        padding: 20px 10px;
+    }
+}
+.taskDate {
+    font-size: .75rem;
+    color: $grey;
 }
 
 // Кнопки изменить и удалить
 .editButtonsBlock {
     display: flex;
-    width: 30%;
     gap: 5px;
-    @media (max-width: 560px) {
-        width: 20%;
-        flex-direction: column;
+    .editButtonsBlock__button {
+        width: 50%;
+        @media (max-width: 560px) {
+            width: 100%;
+        }
     }
 }
 .btnRename, .btnRemove {
@@ -182,7 +198,7 @@
 	cursor: pointer;
 	font-weight: 700;
     transition: opacity .1s ease;
-    &:active {
+    &.button_active:active {
         opacity: .9;
     }
 }
@@ -193,8 +209,9 @@
     caret-color: $active;
     opacity: .8;
     transition: opacity .2s linear;
-    &:focus {
+    &:focus-visible {
         opacity: 1;
+        outline: 2px solid orange;
     }
     &::placeholder {
         color: $disabled;
@@ -207,7 +224,6 @@
 
 // Блок без задач
 .noTaskBlock {
-    flex-grow: 1;
     text-align: center;
     padding: 20px;
     background-color: $milk;
@@ -218,4 +234,7 @@
     @media (max-width: 560px) {
         font-size: 1rem;
     }
+}
+.noTaskBlock__toDoItem {
+    flex-grow: 1;
 }

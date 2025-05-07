@@ -8,7 +8,7 @@
                             <NuxtLink class="navLink" to="/">ToDo</NuxtLink>
                         </li>
                         <li>
-                            <NuxtLink class="navLink" to="/about">Кто я?</NuxtLink>
+                            <NuxtLink class="navLink" to="/resume">Резюме</NuxtLink>
                         </li>
                     </ul>
                 </nav>
@@ -16,10 +16,6 @@
         </div>
     </header>
 </template>
-
-<script setup>
-
-</script>
 
 <style lang="scss" scoped>
     @import './_header.scss';
